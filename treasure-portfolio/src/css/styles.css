@@ -64,3 +64,52 @@ html, body, #root {
   color: white;
   pointer-events: none;
 }
+
+/* Map icon container */
+.map-icon {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+}
+
+.map-icon img {
+  width: clamp(90px, 10vw, 175px);
+  height: auto;
+  transition: transform 0.2s ease;
+}
+
+.map-icon:hover img {
+  transform: scale(1.1);
+}
+
+/* ---- MAP LABEL ---- */
+.map-label {
+  position: absolute;
+  top: 90%;
+  left: 50%;
+  transform: translate(-50%, 0);
+
+  padding: 6px 12px;
+  font-size: 14px;
+  font-family: "Cinzel", "Georgia", serif;
+  letter-spacing: 0.5px;
+
+  color: #f5f1e6;
+  background: rgba(25, 18, 10, 0.85);
+  border: 1px solid rgba(255, 215, 160, 0.4);
+  border-radius: 6px;
+
+  white-space: nowrap;
+  pointer-events: none;
+
+  opacity: 0;
+  transition:
+    opacity 0.2s ease,
+    transform 0.2s ease;
+}
+
+/* Show label on hover */
+.map-icon:hover .map-label {
+  opacity: 1;
+  transform: translate(-50%, 0%);
+}

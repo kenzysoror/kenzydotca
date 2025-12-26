@@ -55,7 +55,7 @@ const MAP_ITEMS = [
     icon: linkedinIcon,
     type: "external",
     target: SOCIAL_LINKS.linkedin,
-    style: { top: "50%", left: "42%" },
+    style: { top: "52%", left: "42%" },
   },
   {
     id: "x",
@@ -71,7 +71,7 @@ const MAP_ITEMS = [
     icon: youtubeIcon,
     type: "external",
     target: SOCIAL_LINKS.youtube,
-    style: { top: "80%", left: "45%" },
+    style: { top: "83%", left: "45%" },
   },
   {
     id: "github",
@@ -87,7 +87,7 @@ const MAP_ITEMS = [
     icon: substackIcon,
     type: "external",
     target: SOCIAL_LINKS.substack,
-    style: { top: "35%", left: "63%" },
+    style: { top: "37%", left: "63%" },
   },
 ]
 

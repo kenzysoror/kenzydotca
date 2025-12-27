@@ -1,27 +1,21 @@
-import { useNavigate } from 'react-router-dom'
 import '../css/styles.css'
 import shipImg from '../assets/images/backgrounds/ship.png'
+import Compass from '../components/Compass'
 
-function News() {
-  const navigate = useNavigate()
-
+function Media() {
   return (
     <div
       className="page"
       style={{ backgroundImage: `url(${shipImg})` }}
     >
-      {/* Compass */}
-      <button className="compass" onClick={() => navigate('/')}>
-        🧭
-      </button>
+      <Compass />
 
       {/* Placeholder for cards */}
       <div className="overlay">
-        <h1>News</h1>
-        <p>Cards.</p>
+        <h1>Media</h1>
       </div>
     </div>
   )
 }
 
-export default News
+export default Media

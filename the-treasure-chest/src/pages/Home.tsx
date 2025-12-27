@@ -5,7 +5,7 @@ import "../css/styles.css"
 import mapBg from "../assets/images/backgrounds/map.png"
 
 import aboutIcon from "../assets/images/icons/about.png"
-import newsIcon from "../assets/images/icons/news.png"
+import mediaIcon from "../assets/images/icons/media.png"
 import instagramIcon from "../assets/images/icons/instagram.png"
 import linkedinIcon from "../assets/images/icons/linkedin.png"
 import xIcon from "../assets/images/icons/x.png"
@@ -34,11 +34,11 @@ const MAP_ITEMS = [
     style: { top: "28%", left: "30%" },
   },
   {
-    id: "news",
-    label: "In the News",
-    icon: newsIcon,
+    id: "media",
+    label: "In the Media",
+    icon: mediaIcon,
     type: "internal",
-    target: "/news",
+    target: "/media",
     style: { top: "70%", left: "70%" },
   },
   {

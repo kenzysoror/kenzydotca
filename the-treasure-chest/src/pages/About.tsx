@@ -1,6 +1,6 @@
 import '../css/styles.css'
 import sandImg from '../assets/images/backgrounds/sand.png'
-import kenzyImg from '../assets/images/kenzy.png'
+import portraitImg from '../assets/images/portrait.png'
 import chestImg from '../assets/images/icons/chest.png'
 import Compass from '../components/Compass'
 
@@ -47,7 +47,7 @@ function About() {
         </p>
 
         <img
-          src={kenzyImg}
+          src={portraitImg}
           alt="Kenzy portrait"
           className="about-portrait"
         />

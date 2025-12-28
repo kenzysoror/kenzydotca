@@ -1,0 +1,16 @@
+.map-button {
+  position: absolute;
+  padding: 10px 16px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.map-button.about {
+  top: 40%;
+  left: 30%;
+}
+
+.map-button.media {
+  top: 55%;
+  left: 60%;
+}

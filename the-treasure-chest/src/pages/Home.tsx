@@ -1,5 +1,7 @@
 import { useNavigate } from "react-router-dom"
-import "../css/styles.css"
+import "../css/general.css"
+import "../css/map-buttons.css"
+import "../css/map-icons.css"
 
 // --- ICON IMPORTS ---
 import mapBg from "../assets/images/backgrounds/map.png"

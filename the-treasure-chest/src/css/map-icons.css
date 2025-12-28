@@ -5,13 +5,18 @@
 }
 
 .map-icon img {
-  width: clamp(90px, 10vw, 175px);
+  width: clamp(64px, calc(var(--design-width) * 0.08 * 1px), 160px);
   height: auto;
   transition: transform 0.2s ease;
 }
 
 .map-icon:hover img {
   transform: scale(1.1);
+}
+
+.map-page {
+  padding-bottom: 48px;
+  box-sizing: border-box;
 }
 
 .map-label {

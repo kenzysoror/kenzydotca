@@ -3,7 +3,6 @@ import "../css/general.css"
 import "../css/map-buttons.css"
 import "../css/map-icons.css"
 
-// --- ICON IMPORTS ---
 import mapBg from "../assets/images/backgrounds/map.png"
 
 import aboutIcon from "../assets/images/icons/about.png"
@@ -15,7 +14,6 @@ import youtubeIcon from "../assets/images/icons/youtube.png"
 import githubIcon from "../assets/images/icons/github.png"
 import substackIcon from "../assets/images/icons/substack.png"
 
-// --- LINKS CONFIG ---
 const SOCIAL_LINKS = {
   instagram: "https://www.instagram.com/kenzy.soror/",
   linkedin: "https://www.linkedin.com/in/kenzysoror/",
@@ -25,7 +23,6 @@ const SOCIAL_LINKS = {
   substack: "https://kenzysoror.substack.com/",
 }
 
-// --- MAP ICON DEFINITIONS ---
 const MAP_ITEMS = [
   {
     id: "about",
@@ -65,7 +62,7 @@ const MAP_ITEMS = [
     icon: xIcon,
     type: "external",
     target: SOCIAL_LINKS.x,
-    style: { top: "30%", left: "82%" },
+    style: { top: "30%", left: "80%" },
   },
   {
     id: "youtube",
@@ -81,7 +78,7 @@ const MAP_ITEMS = [
     icon: githubIcon,
     type: "external",
     target: SOCIAL_LINKS.github,
-    style: { top: "70%", left: "20%" },
+    style: { top: "65%", left: "22%" },
   },
   {
     id: "substack",
@@ -89,7 +86,7 @@ const MAP_ITEMS = [
     icon: substackIcon,
     type: "external",
     target: SOCIAL_LINKS.substack,
-    style: { top: "37%", left: "63%" },
+    style: { top: "39%", left: "63%" },
   },
 ]
 

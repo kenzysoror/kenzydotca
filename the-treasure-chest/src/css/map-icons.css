@@ -30,7 +30,7 @@
   font-weight: 900;
   letter-spacing: 2px;
 
-  color: #5C3A21;
+  color: #800000;
 
   white-space: nowrap;
   pointer-events: none;
@@ -40,10 +40,10 @@
     opacity 0.2s ease,
     transform 0.2s ease;
   text-shadow:
-    -0.5px -0.5px 0 #f8e9cf,
-     0.5px -0.5px 0 #f8e9cf,
-    -0.5px  0.5px 0 #f8e9cf,
-     0.5px  0.5px 0 #f8e9cf;
+    -0.25px -0.25px 0,
+     0.25px -0.25px 0,
+    -0.25px  0.25px 0,
+     0.25px  0.25px 0;
 }
 
 .map-icon:hover .map-label {

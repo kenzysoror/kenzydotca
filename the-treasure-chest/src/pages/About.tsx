@@ -6,7 +6,6 @@ import portraitImg from '../assets/images/portrait.png'
 import chestImg from '../assets/images/icons/chest.png'
 import Compass from '../components/Compass'
 
-// --- Links for university pages ---
 const UNIVERSITY_LINKS = {
   uw: 'https://cs.uwaterloo.ca/',
   laurier: 'https://www.wlu.ca/academics/faculties/lazaridis-school-of-business-and-economics/index.html'
@@ -20,7 +19,6 @@ function About() {
     >
       <Compass />
 
-      {/* Text boxes */}
       <div className="book-text book-left">
         <img
           src={chestImg}

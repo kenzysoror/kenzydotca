@@ -2,8 +2,8 @@ import '../css/general.css'
 import '../css/compass.css'
 import '../css/about.css'
 import sandImg from '../assets/images/backgrounds/sand.png'
-import portraitImg from '../assets/images/portrait.png'
-import chestImg from '../assets/images/icons/chest.png'
+import portraitImg from '../assets/images/drawings/portrait.png'
+import chestImg from '../assets/images/drawings/chest.png'
 import Compass from '../components/Compass'
 
 const UNIVERSITY_LINKS = {

@@ -5,12 +5,19 @@ export default function Compass() {
   const navigate = useNavigate()
 
   return (
-    <button
-      className="compass"
-      onClick={() => navigate("/")}
-      aria-label="Back to map"
-    >
-      <img src={compassIcon} alt="" />
-    </button>
+    <div className="compass-root">
+      <button
+        className="compass-toggle"
+        type="button"
+        onClick={() => navigate("/")}
+        aria-label="Back to map"
+      >
+        <img 
+          src={compassIcon} 
+          alt="Compass" 
+          className="compass-icon" 
+        />
+      </button>
+    </div>
   )
 }

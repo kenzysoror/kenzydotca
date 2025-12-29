@@ -1,40 +1,28 @@
 import React, { useEffect } from 'react'
 
-const STORAGE_KEY = 'designViewport'
-
 type Base = { width: number; height: number }
 
 /**
- * Captures and persists the original design viewport size.
- * This establishes a stable baseline used for scaling content.
+ * Sets fixed design baseline on mount
  */
 function useDesignBase() {
   useEffect(() => {
-    let base: Base | null = null
+    const DESIGN_WIDTH = 1920
+    const DESIGN_HEIGHT = 850
+    
+    const base: Base = { width: DESIGN_WIDTH, height: DESIGN_HEIGHT }
 
-    try {
-      const saved = localStorage.getItem(STORAGE_KEY)
-      base = saved ? (JSON.parse(saved) as Base) : null
-    } catch (e) {
-      base = null
-    }
+    // Set CSS custom properties
+    const root = document.documentElement
+    root.style.setProperty('--design-width', String(base.width))
+    root.style.setProperty('--design-height', String(base.height))
+    root.style.setProperty('--scale', '1')
 
-    // If no baseline exists, store the current viewport as the design baseline
-    if (!base) {
-      base = { width: window.innerWidth, height: window.innerHeight }
-      try {
-        localStorage.setItem(STORAGE_KEY, JSON.stringify(base))
-      } catch (e) {
-        // Ignore storage failures
-      }
-    }
+    // Force initial resize
+    window.getComputedStyle(root).width
+    window.dispatchEvent(new Event('resize'))
+    window.dispatchEvent(new Event('viewport-resize'))
 
-    // Expose design dimensions and initialize scale
-    document.documentElement.style.setProperty('--design-width', String(base.width))
-    document.documentElement.style.setProperty('--design-height', String(base.height))
-    document.documentElement.style.setProperty('--scale', '1')
-
-    // Notify listeners that the viewport has changed
     function onResize() {
       window.dispatchEvent(new Event('viewport-resize'))
     }
@@ -45,8 +33,7 @@ function useDesignBase() {
 }
 
 /**
- * Scales the site frame to match how the background image is scaled,
- * ensuring layout proportions remain consistent across viewport sizes.
+ * Scales the site frame to match how the background image is scaled
  */
 export default function ViewportScaler({ children }: { children: React.ReactNode }) {
   useDesignBase()
@@ -89,7 +76,6 @@ export default function ViewportScaler({ children }: { children: React.ReactNode
         viewportEl.style.backgroundSize = 'cover'
         viewportEl.style.backgroundPosition = 'center'
         viewportEl.style.backgroundRepeat = 'no-repeat'
-
       } else {
         viewportEl.style.backgroundImage = ''
       }
@@ -98,8 +84,7 @@ export default function ViewportScaler({ children }: { children: React.ReactNode
       const m = bg.match(/url\((?:"|')?(.*?)(?:"|')?\)/)
       if (!m || !m[1]) {
         // Fallback scaling based on viewport vs design size
-        const baseRaw = localStorage.getItem(STORAGE_KEY)
-        const base = baseRaw ? (JSON.parse(baseRaw) as Base) : { width: window.innerWidth, height: window.innerHeight }
+        const base: Base = { width: 1920, height: 750 }
         const fallbackScale = Math.min(window.innerWidth / base.width, window.innerHeight / base.height)
         document.documentElement.style.setProperty('--scale', String(fallbackScale))
         return
@@ -109,9 +94,8 @@ export default function ViewportScaler({ children }: { children: React.ReactNode
       const imgSize = await loadImageSize(url)
       if (!imgSize) return
 
-      const baseRaw = localStorage.getItem(STORAGE_KEY)
-      const base = baseRaw ? (JSON.parse(baseRaw) as Base) : { width: window.innerWidth, height: window.innerHeight }
-
+      // Fixed design baseline
+      const base: Base = { width: 1920, height: 750 }
       const vw = window.innerWidth
       const vh = window.innerHeight
 

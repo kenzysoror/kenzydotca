@@ -1,5 +1,5 @@
 # Deploy Vite site to GitHub Pages
-name: Deploy to GitHub Pages
+name: Deploy static content to Pages
 
 on:
   push:
@@ -18,47 +18,34 @@ concurrency:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
 
     steps:
-      # 1. Checkout repo
       - name: Checkout
         uses: actions/checkout@v5
 
-      # 2. Setup Node
-      - name: Setup Node
+      - name: Set up Node
         uses: actions/setup-node@v6
         with:
           node-version: lts/*
-          cache: npm
-          cache-dependency-path: kenzydotca/package-lock.json
+          cache: 'npm'
 
-      # 3. Install dependencies (INSIDE VITE APP)
       - name: Install dependencies
-        run: |
-          cd kenzydotca
-          npm install
+        run: npm install
 
-      # 4. Build Vite site
       - name: Build
-        run: |
-          cd kenzydotca
-          npm run build
+        run: npm run build
 
-      # 5. Configure GitHub Pages
       - name: Setup Pages
         uses: actions/configure-pages@v5
 
-      # 6. Upload dist folder
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v4
         with:
-          path: kenzydotca/dist
+          path: dist
 
-      # 7. Deploy
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4

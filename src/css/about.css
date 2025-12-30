@@ -6,7 +6,7 @@
 
 .about-content {
   max-width: 80vw;
-  max-height: 80vh;
+  max-height: 70vh;
   overflow-y: auto;
 
   padding: clamp(10px, 2vw, 15px);

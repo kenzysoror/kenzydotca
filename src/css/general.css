@@ -5,8 +5,8 @@
 }
 
 :root {
-  --safe-top: 100px;
-  --safe-bottom: 100px;
+  --safe-top: 90px;
+  --safe-bottom: 90px;
   --safe-left: 48px;
   --safe-right: 48px;
 }
@@ -34,8 +34,4 @@ html, body, #root {
   display: flex;
   align-items: center;
   justify-content: center;
-}
-
-.page > *:not(.compass-root):not(.audio-root) {
-  flex-shrink: 0;
 }

@@ -1,8 +1,5 @@
 import '../css/general.css'
-import '../css/media-card.css'
-import '../css/media-paper.css'
-import '../css/media-board.css'
-import '../css/media-pin.css'
+import '../css/media.css'
 import '../css/compass.css'
 import MediaCard from '../components/MediaCard'
 import Compass from '../components/Compass'
@@ -187,20 +184,22 @@ const MEDIA_ITEMS: MediaItem[] = [
 export default function Media() {
   return (
     <div
-      className="page"
+      className="page media-page"
       style={{ backgroundImage: `url(${shipImg})` }}
     >
       <Compass />
 
-      <div className="media-board">
-        {MEDIA_ITEMS.map((item, index) => (
-          <MediaCard
-            key={index}
-            image={item.image}
-            link={item.link}
-            alt={item.alt}
-          />
-        ))}
+      <div className="media-content">
+        <div className="media-board">
+          {MEDIA_ITEMS.map((item, index) => (
+            <MediaCard
+              key={index}
+              image={item.image}
+              link={item.link}
+              alt={item.alt}
+            />
+          ))}
+        </div>
       </div>
     </div>
   )

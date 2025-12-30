@@ -1,0 +1,195 @@
+/* =========================
+   PAGE LAYOUT
+   ========================= */
+
+.media-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.media-content {
+  max-width: 80vw;
+  max-height: 70vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: clamp(10px, 2vw, 15px);
+  scrollbar-color: rgba(210, 185, 120, 0.85) rgba(25, 18, 10, 0.12);
+}
+
+.media-board {
+  overflow: hidden;
+  padding: 10px;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(15vw, 1fr));
+  grid-auto-rows: auto;
+  gap: clamp(16px, 2.5vw, 32px);
+  box-sizing: border-box;
+}
+
+/* Desktop: 3 columns */
+@media (min-width: 1000px) {
+  .media-board {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Tablet: 2 columns */
+@media (max-width: 999px) and (min-width: 600px) {
+  .media-board {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Mobile: 1 column */
+@media (max-width: 599px) {
+  .media-board {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* =========================
+   MEDIA CARD BASE
+   ========================= */
+
+.media-card {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: block;
+
+  cursor: pointer;
+  text-decoration: none;
+}
+
+/* =========================
+   PAPER CONTAINER
+   ========================= */
+
+.media-paper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-width: 0;
+  min-height: 0;
+
+  padding: clamp(12px, 3vw, 20px);
+
+  box-sizing: border-box;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  overflow: hidden;
+
+  filter: drop-shadow(0 6px 14px rgba(0, 0, 0, 0.25));
+  transition: transform 0.25s ease, filter 0.25s ease;
+}
+
+.media-paper::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  background-image: url('../assets/images/icons/paper.png');
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+
+  pointer-events: none;
+  z-index: 0;
+
+  backface-visibility: hidden;
+  transform-origin: center;
+}
+
+/* =========================
+   MEDIA IMAGE
+   ========================= */
+
+.media-paper img,
+.media-image {
+  width: 100%;
+  height: 75%;
+
+  object-fit: contain;
+  display: block;
+
+  border-radius: 4px;
+
+  filter: sepia(50%)
+          saturate(0.85)
+          contrast(0.95)
+          brightness(0.98);
+}
+
+.media-paper > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* =========================
+   ROTATIONS (UNCHANGED)
+   ========================= */
+
+.media-board .media-card:nth-child(4n + 1) {
+  transform: translate(4px, -8px) rotate(-3deg);
+}
+
+.media-board .media-card:nth-child(4n + 2) {
+  transform: translate(8px, -4px) rotate(2deg);
+}
+
+.media-board .media-card:nth-child(4n + 3) {
+  transform: translate(-4px, 6px) rotate(-1.5deg);
+}
+
+.media-board .media-card:nth-child(4n + 4) {
+  transform: translate(6px, 8px) rotate(3deg);
+}
+
+.media-board .media-card:nth-child(2n) .media-paper::before {
+  transform: scaleX(-1);
+}
+
+.media-board .media-card:nth-child(3n) .media-paper::before {
+  transform: scaleY(-1);
+}
+
+/* =========================
+   PINS
+   ========================= */
+
+.media-card .media-pin {
+  position: absolute;
+  left: 50%;
+  top: clamp(10px, 2vh, 15px);
+
+  transform: translate(-50%, -50%);
+  width: clamp(20px, 4vw, 30px);
+
+  z-index: 6;
+  pointer-events: none;
+
+  display: block;
+  object-fit: contain;
+}
+
+.media-board .media-card:nth-child(2n) .media-pin {
+  transform: translate(-50%, -50%) scaleX(-1);
+}
+
+.media-board .media-card:nth-child(3n) .media-pin {
+  transform: translate(-50%, -50%) rotate(-6deg);
+}
+
+/* =========================
+   HOVER EFFECTS
+   ========================= */
+
+.media-card:hover .media-paper {
+  transform: translateY(-4px) rotate(0.6deg);
+  filter: drop-shadow(0 10px 22px rgba(0, 0, 0, 0.35));
+}

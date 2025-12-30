@@ -5,7 +5,7 @@
 }
 
 .map-icon img {
-  width: clamp(64px, calc(var(--design-width) * 0.08 * 1px), 160px);
+  width: clamp(10px, 10vh, 20px);
   height: auto;
   transition: transform 0.2s ease;
 }

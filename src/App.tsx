@@ -5,7 +5,7 @@ import Media from './pages/Media'
 
 function App() {
   return (
-    <BrowserRouter basename="/kenzydotca/">
+    <BrowserRouter basename="/">
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />

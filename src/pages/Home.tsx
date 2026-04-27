@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom"
 import { useImagesLoaded } from "../hooks/useImagesLoaded"
 import { useLoader } from "../hooks/useLoader"
 import PageLoader from "../components/PageLoader"
+import CursorTrail from "../components/CursorTrail"
 import "../css/general.css"
 import "../css/map.css"
 
@@ -76,6 +77,7 @@ export default function Home() {
         className={`page map-page ${pageClass}`}
         style={{ backgroundImage: `url(${mapBg})` }}
       >
+      <CursorTrail />
       <div className="map-container">
         {MAP_ITEMS.map((item) => (
           <div

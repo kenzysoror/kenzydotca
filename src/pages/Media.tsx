@@ -1,9 +1,16 @@
+import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+import { useImagesLoaded } from '../hooks/useImagesLoaded'
+import { useLoader } from '../hooks/useLoader'
+import PageLoader from '../components/PageLoader'
 import '../css/general.css'
 import '../css/media.css'
 import '../css/compass.css'
 import MediaCard from '../components/MediaCard'
 import Compass from '../components/Compass'
 import shipImg from '../assets/images/backgrounds/ship.png'
+import pinImg from '../assets/images/icons/pin.png'
+import paperImg from '../assets/images/icons/paper.png'
 
 import cbcGrads from '../assets/images/media/cbc-news_waterloo-grads-reflect.png'
 import ontarioTodayGrade from '../assets/images/media/cbc-ontario-today_grade-school-year.png'
@@ -182,12 +189,29 @@ const MEDIA_ITEMS: MediaItem[] = [
 ]
 
 export default function Media() {
+  const navigate = useNavigate()
+  const [exiting, setExiting] = useState(false)
+  const loaded = useImagesLoaded(
+    [shipImg, paperImg, pinImg, ...MEDIA_ITEMS.map(item => item.image)],
+    1500
+  )
+  const { showLoader, loaderFading } = useLoader(loaded)
+
+  const goHome = () => {
+    setExiting(true)
+    setTimeout(() => navigate('/'), 400)
+  }
+
+  const pageClass = !loaded ? 'page-loading' : exiting ? 'page-exit' : 'page-reveal'
+
   return (
-    <div
-      className="page media-page"
-      style={{ backgroundImage: `url(${shipImg})` }}
-    >
-      <Compass />
+    <>
+      {showLoader && <PageLoader message="Scouring the archives..." fading={loaderFading} />}
+      <div
+        className={`page media-page ${pageClass}`}
+        style={{ backgroundImage: `url(${shipImg})` }}
+      >
+      <Compass onNavigate={goHome} />
 
       <div className="media-content">
         <div className="media-board">
@@ -202,5 +226,6 @@ export default function Media() {
         </div>
       </div>
     </div>
+    </>
   )
 }

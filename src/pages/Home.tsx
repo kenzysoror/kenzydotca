@@ -1,4 +1,8 @@
+import { useState } from "react"
 import { useNavigate } from "react-router-dom"
+import { useImagesLoaded } from "../hooks/useImagesLoaded"
+import { useLoader } from "../hooks/useLoader"
+import PageLoader from "../components/PageLoader"
 import "../css/general.css"
 import "../css/map.css"
 
@@ -42,19 +46,36 @@ const MAP_ITEMS: MapItem[] = [
   { id: "substack", label: "Substack", icon: substackIcon, type: "external", target: SOCIAL_LINKS.substack, style: { top: "calc(50% - 12vh)", right: "calc(50% - 22vw)" } },
 ]
 
+const PAGE_IMAGES = [
+  mapBg,
+  aboutIcon, mediaIcon, instagramIcon, linkedinIcon,
+  xIcon, youtubeIcon, githubIcon, substackIcon,
+]
+
 export default function Home() {
   const navigate = useNavigate()
+  const [exiting, setExiting] = useState(false)
+  const loaded = useImagesLoaded(PAGE_IMAGES, 1500)
+  const { showLoader, loaderFading } = useLoader(loaded)
 
   const handleClick = (item: MapItem) => {
     if (item.type === "internal") {
-      navigate(item.target)
+      setExiting(true)
+      setTimeout(() => navigate(item.target), 400)
     } else {
       window.open(item.target, "_blank", "noopener,noreferrer")
     }
   }
 
+  const pageClass = !loaded ? "page-loading" : exiting ? "page-exit" : "page-reveal"
+
   return (
-    <div className="page map-page" style={{ backgroundImage: `url(${mapBg})` }}>
+    <>
+      {showLoader && <PageLoader message="Charting the waters..." fading={loaderFading} />}
+      <div
+        className={`page map-page ${pageClass}`}
+        style={{ backgroundImage: `url(${mapBg})` }}
+      >
       <div className="map-container">
         {MAP_ITEMS.map((item) => (
           <div
@@ -69,5 +90,6 @@ export default function Home() {
         ))}
       </div>
     </div>
+    </>
   )
 }

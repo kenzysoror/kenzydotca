@@ -1,3 +1,9 @@
+import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+import { useImagesLoaded } from '../hooks/useImagesLoaded'
+import { useFontsLoaded } from '../hooks/useFontsLoaded'
+import { useLoader } from '../hooks/useLoader'
+import PageLoader from '../components/PageLoader'
 import '../css/general.css'
 import '../css/compass.css'
 import '../css/about.css'
@@ -11,12 +17,28 @@ const UNIVERSITY_LINKS = {
 }
 
 function About() {
+  const navigate = useNavigate()
+  const [exiting, setExiting] = useState(false)
+  const imagesLoaded = useImagesLoaded([sandImg, portraitImg], 1500)
+  const fontsLoaded = useFontsLoaded()
+  const loaded = imagesLoaded && fontsLoaded
+  const { showLoader, loaderFading } = useLoader(loaded)
+
+  const goHome = () => {
+    setExiting(true)
+    setTimeout(() => navigate('/'), 400)
+  }
+
+  const pageClass = !loaded ? 'page-loading' : exiting ? 'page-exit' : 'page-reveal'
+
   return (
-    <div
-      className="page about-page"
-      style={{ backgroundImage: `url(${sandImg})` }}
-    >
-      <Compass />
+    <>
+      {showLoader && <PageLoader message="Reading the stars..." fading={loaderFading} />}
+      <div
+        className={`page about-page ${pageClass}`}
+        style={{ backgroundImage: `url(${sandImg})` }}
+      >
+      <Compass onNavigate={goHome} />
 
       <div className="about-content">
         <div className="about-text">
@@ -26,7 +48,7 @@ function About() {
             className="about-portrait"
           />
           <p>
-            Hello, fellow explorer! My name is Kenzy (pronounced “Kin”zy). I’m a
+            Hello, fellow explorer! My name is Kenzy (pronounced "Kin"zy). I'm a
             Double-Degree student studying Computer Science at the{' '}
             <a
               href={UNIVERSITY_LINKS.uw}
@@ -60,12 +82,13 @@ function About() {
           <p>
             In my free time, I love losing myself in stories that stir the soul,
             learning as many instruments as I can get my hands on, and eagerly
-            sharing the latest cinematic masterpiece I’ve come across with
+            sharing the latest cinematic masterpiece I've come across with
             anyone willing to listen!
           </p>
         </div>
       </div>
     </div>
+    </>
   )
 }
 

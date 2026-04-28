@@ -22,6 +22,8 @@
   cursor: pointer;
   transform-origin: center;
 
+  animation: compass-rotate 4s linear infinite;
+
   transition:
     transform 0.18s ease,
     filter 0.18s ease;
@@ -30,7 +32,7 @@
 .compass-toggle::before {
   content: "";
   position: absolute;
-  inset: -10px;
+  inset: -12px;
 
   background: rgba(25, 18, 10, 0.85);
   border-radius: 50%;
@@ -41,11 +43,12 @@
 
 .compass-toggle:hover {
   transform: scale(1.1);
+  animation-play-state: paused;
 }
 
 @keyframes compass-rotate {
-  from { transform: rotate(0deg); }
-  to   { transform: rotate(360deg); }
+  from { rotate: 0deg; }
+  to   { rotate: 360deg; }
 }
 
 .compass-icon {
@@ -57,12 +60,6 @@
 
   object-fit: contain;
   pointer-events: none;
-
-  animation: compass-rotate 4s linear infinite;
-}
-
-.compass-toggle:hover .compass-icon {
-  animation-play-state: paused;
 }
 
 .compass-toggle:focus,

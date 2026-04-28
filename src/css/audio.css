@@ -3,6 +3,7 @@
   top: 28px;
   left: 28px;
   z-index: 120000;
+  cursor: none;
 }
 
 .audio-toggle {
@@ -19,7 +20,7 @@
   border: none;
   border-radius: 50%;
 
-  cursor: pointer;
+  cursor: none;
   transform-origin: center;
 
   transition:

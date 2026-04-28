@@ -19,7 +19,7 @@
 
 .map-icon {
   position: absolute;
-  cursor: pointer;
+  cursor: none;
   display: flex;
   flex-direction: column;
   align-items: center;

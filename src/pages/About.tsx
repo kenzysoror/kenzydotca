@@ -11,6 +11,7 @@ import sandImg from '../assets/images/backgrounds/sand.png'
 import portraitImg from '../assets/images/drawings/portrait.png'
 import Compass from '../components/Compass'
 import ParticleFall from '../components/ParticleFall'
+import ScrollArea from '../components/ScrollArea'
 
 const UNIVERSITY_LINKS = {
   uw: 'https://cs.uwaterloo.ca/',
@@ -42,7 +43,7 @@ function About() {
       <ParticleFall />
       <Compass onNavigate={goHome} />
 
-      <div className="about-content">
+      <ScrollArea className="about-content" thumbColor="rgba(121, 76, 44, 0.85)">
         <div className="about-text">
           <img
             src={portraitImg}
@@ -88,7 +89,7 @@ function About() {
             anyone willing to listen!
           </p>
         </div>
-      </div>
+      </ScrollArea>
     </div>
     </>
   )

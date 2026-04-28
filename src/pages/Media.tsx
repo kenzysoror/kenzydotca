@@ -9,6 +9,7 @@ import '../css/compass.css'
 import MediaCard from '../components/MediaCard'
 import Compass from '../components/Compass'
 import ParticleFall from '../components/ParticleFall'
+import ScrollArea from '../components/ScrollArea'
 import shipImg from '../assets/images/backgrounds/ship.png'
 import pinImg from '../assets/images/icons/pin.png'
 import paperImg from '../assets/images/icons/paper.png'
@@ -215,7 +216,7 @@ export default function Media() {
       <ParticleFall />
       <Compass onNavigate={goHome} />
 
-      <div className="media-content">
+      <ScrollArea className="media-content" thumbColor="rgba(210, 185, 120, 0.85)">
         <div className="media-board">
           {MEDIA_ITEMS.map((item, index) => (
             <MediaCard
@@ -226,7 +227,7 @@ export default function Media() {
             />
           ))}
         </div>
-      </div>
+      </ScrollArea>
     </div>
     </>
   )

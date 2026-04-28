@@ -11,10 +11,7 @@
 .media-content {
   max-width: 80vw;
   max-height: 70vh;
-  overflow-y: auto;
-  overflow-x: hidden;
   padding: clamp(10px, 2vw, 15px);
-  scrollbar-color: rgba(210, 185, 120, 0.85) rgba(25, 18, 10, 0.12);
 }
 
 .media-board {
@@ -59,7 +56,7 @@
   height: 100%;
   display: block;
 
-  cursor: pointer;
+  cursor: none;
   text-decoration: none;
 }
 

@@ -3,6 +3,7 @@
   bottom: 28px;
   right: 28px;
   z-index: 120000;
+  cursor: none;
 }
 
 .compass-toggle {
@@ -19,7 +20,7 @@
   border: none;
   border-radius: 50%;
 
-  cursor: pointer;
+  cursor: none;
   transform-origin: center;
 
   animation: compass-rotate 4s linear infinite;

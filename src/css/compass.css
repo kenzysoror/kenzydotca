@@ -22,9 +22,8 @@
   cursor: pointer;
   transform-origin: center;
 
-  animation: compass-pulse 2.4s ease-in-out infinite;
   transition:
-    transform 0.4s ease,
+    transform 0.18s ease,
     filter 0.18s ease;
 }
 
@@ -41,20 +40,12 @@
 }
 
 .compass-toggle:hover {
-  animation-play-state: paused;
-  transform: rotate(18deg) scale(1.15);
+  transform: scale(1.1);
 }
 
-@keyframes compass-pulse {
-  0% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.08);
-  }
-  100% {
-    transform: scale(1);
-  }
+@keyframes compass-rotate {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
 }
 
 .compass-icon {
@@ -67,11 +58,11 @@
   object-fit: contain;
   pointer-events: none;
 
-  transition: transform 0.4s ease;
+  animation: compass-rotate 4s linear infinite;
 }
 
 .compass-toggle:hover .compass-icon {
-  transform: rotate(20deg) scale(1.15);
+  animation-play-state: paused;
 }
 
 .compass-toggle:focus,

@@ -16,6 +16,7 @@
   align-items: center;
   justify-content: center;
   overflow: hidden;
+  background-color: #46200b;
   animation: loader-fade-in 0.35s ease-out both;
 }
 
@@ -26,7 +27,7 @@
 
 .loader-paper {
   position: absolute;
-  inset: -10%;
+  inset: -8%;
   background-image: url('../assets/images/icons/paper.png');
   background-size: cover;
   background-position: center;

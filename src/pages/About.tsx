@@ -10,6 +10,7 @@ import '../css/about.css'
 import sandImg from '../assets/images/backgrounds/sand.png'
 import portraitImg from '../assets/images/drawings/portrait.png'
 import Compass from '../components/Compass'
+import ParticleFall from '../components/ParticleFall'
 
 const UNIVERSITY_LINKS = {
   uw: 'https://cs.uwaterloo.ca/',
@@ -38,6 +39,7 @@ function About() {
         className={`page about-page ${pageClass}`}
         style={{ backgroundImage: `url(${sandImg})` }}
       >
+      <ParticleFall />
       <Compass onNavigate={goHome} />
 
       <div className="about-content">

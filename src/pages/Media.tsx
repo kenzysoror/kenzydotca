@@ -8,6 +8,7 @@ import '../css/media.css'
 import '../css/compass.css'
 import MediaCard from '../components/MediaCard'
 import Compass from '../components/Compass'
+import ParticleFall from '../components/ParticleFall'
 import shipImg from '../assets/images/backgrounds/ship.png'
 import pinImg from '../assets/images/icons/pin.png'
 import paperImg from '../assets/images/icons/paper.png'
@@ -211,6 +212,7 @@ export default function Media() {
         className={`page media-page ${pageClass}`}
         style={{ backgroundImage: `url(${shipImg})` }}
       >
+      <ParticleFall />
       <Compass onNavigate={goHome} />
 
       <div className="media-content">
